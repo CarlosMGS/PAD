@@ -6,4 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".CalculatorResultActivity">
 
+    <TextView
+        android:id="@+id/result_text"
+        android:layout_width="250dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="304dp"
+        android:gravity="center"
+        android:text="TextView"
+        android:textColor="#FF5722"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>
