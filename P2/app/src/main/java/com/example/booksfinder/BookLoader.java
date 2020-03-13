@@ -29,6 +29,8 @@ public class BookLoader extends AsyncTaskLoader<String> {
 
     public String getBookInfoJson(String queryString, String printType){
 
+        String input = "";
+
         String base_url = "https://www.googleapis.com/books/v1/volumes?";
         String max_results = "maxResults";
         String print_type = "printType";
@@ -50,12 +52,16 @@ public class BookLoader extends AsyncTaskLoader<String> {
             conn.setRequestMethod("GET");
             conn.setDoInput(true);
 
+            input = conn.getInputStream().toString();
+
+            System.out.println(input);
+
         }
         catch(Exception e){
             System.err.println("Error en la conexión con el API");
         }
 
-        return "";
+        return input;
 
     }
 

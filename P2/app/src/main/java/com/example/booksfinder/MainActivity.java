@@ -9,6 +9,8 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
 
     EditText editText;
@@ -34,12 +36,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void searchBooks(View view){
+
+        /*initialize the variables*/
+
+        radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
+
+
         /* concat authors names and title */
         String queryString = editText.getText() + " " + editText2.getText();
         String printType = new String();
         int radioButtonId = radioGroup.getCheckedRadioButtonId();
         RadioButton radioButton;
-        if (radioButtonId != -1){
+        if (radioButtonId != BOOK_LOADER_ID){
             radioButton = (RadioButton) radioGroup.findViewById(radioButtonId);
             if (radioButton != null){
                 printType = (String) radioButton.getText().toString();
@@ -50,5 +58,11 @@ public class MainActivity extends AppCompatActivity {
         queryBundle.putString(BookLoaderCallbacks.EXTRA_QUERY, queryString);
         queryBundle.putString(BookLoaderCallbacks.EXTRA_PRINT_TYPE, printType);
         LoaderManager.getInstance(this).restartLoader(BOOK_LOADER_ID, queryBundle, bookLoaderCallbacks);
+
+
+    }
+
+    void updateBooksResultList(List<BookInfo> bookInfos){
+
     }
 }
