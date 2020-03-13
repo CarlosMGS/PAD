@@ -7,7 +7,7 @@ import androidx.annotation.Nullable;
 import androidx.loader.app.LoaderManager;
 import androidx.loader.content.Loader;
 
-public class BookLoaderCallbacks implements  LoaderManager.LoaderCallbacks<String>{
+public class BookLoaderCallbacks implements LoaderManager.LoaderCallbacks<String> {
 
 
     public static final String EXTRA_QUERY = null;
@@ -15,9 +15,7 @@ public class BookLoaderCallbacks implements  LoaderManager.LoaderCallbacks<Strin
 
     @NonNull
     @Override
-    public Loader<String> onCreateLoader(int id, @Nullable Bundle args) {
-        return null;
-    }
+    public Loader<String> onCreateLoader(int id, @Nullable Bundle args) {return null;}
 
     @Override
     public void onLoadFinished(@NonNull Loader<String> loader, String data) {

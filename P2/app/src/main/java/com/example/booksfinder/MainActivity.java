@@ -11,13 +11,13 @@ import android.widget.RadioGroup;
 
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity<BookLoaderCallbacks> extends AppCompatActivity {
 
     EditText editText;
     EditText editText2;
     RadioGroup radioGroup;
     private static final int BOOK_LOADER_ID = -1;
-    private BookLoaderCallbacks bookLoaderCallbacks = new BookLoaderCallbacks();
+    private BookLoaderCallbacks bookLoaderCallbacks = BookLoaderCallbacks.onCreateLoader();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,19 +31,17 @@ public class MainActivity extends AppCompatActivity {
         /* Loader initialization*/
         LoaderManager loaderManager = LoaderManager.getInstance(this);
         if (loaderManager.getLoader(BOOK_LOADER_ID) != null){
-            loaderManager.initLoader(BOOK_LOADER_ID, null, bookLoaderCallbacks);
+            loaderManager.initLoader(BOOK_LOADER_ID, null, (LoaderManager.LoaderCallbacks<Object>) bookLoaderCallbacks);
         }
     }
 
     public void searchBooks(View view){
 
         /*initialize the variables*/
-
         radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
 
-
         /* concat authors names and title */
-        String queryString = editText.getText() + " " + editText2.getText();
+        String queryString = editText.getText().toString() + " " + editText2.getText().toString();
         String printType = new String();
         int radioButtonId = radioGroup.getCheckedRadioButtonId();
         RadioButton radioButton;
@@ -57,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         Bundle queryBundle = new Bundle();
         queryBundle.putString(BookLoaderCallbacks.EXTRA_QUERY, queryString);
         queryBundle.putString(BookLoaderCallbacks.EXTRA_PRINT_TYPE, printType);
-        LoaderManager.getInstance(this).restartLoader(BOOK_LOADER_ID, queryBundle, bookLoaderCallbacks);
+        LoaderManager.getInstance(this).restartLoader(BOOK_LOADER_ID, queryBundle, (LoaderManager.LoaderCallbacks<Object>) bookLoaderCallbacks);
 
 
     }
