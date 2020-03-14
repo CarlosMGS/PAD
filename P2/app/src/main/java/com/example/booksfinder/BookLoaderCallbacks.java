@@ -16,6 +16,10 @@ public class BookLoaderCallbacks implements LoaderManager.LoaderCallbacks<List<B
     public static final String EXTRA_QUERY = "queryString";
     public static final String EXTRA_PRINT_TYPE = "printType";
 
+    public BookLoaderCallbacks(){
+        super();
+    }
+
     @NonNull
     @Override
     public Loader<List<BookInfo>> onCreateLoader(int id, @Nullable Bundle args) {

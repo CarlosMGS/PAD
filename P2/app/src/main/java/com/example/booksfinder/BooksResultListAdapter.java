@@ -1,5 +1,6 @@
 package com.example.booksfinder;
 
+import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -13,7 +14,11 @@ import java.util.List;
 public class BooksResultListAdapter extends RecyclerView.Adapter<BooksResultListAdapter.ViewHolder> {
 
 
-    ArrayList<BookInfo> mBooksData;
+    List<BookInfo> mBooksData;
+
+    public <BookLoaderCallbacks> BooksResultListAdapter(Context context, List<BookInfo> bookInfos) {
+        mBooksData = bookInfos;
+    }
 
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -49,10 +54,11 @@ public class BooksResultListAdapter extends RecyclerView.Adapter<BooksResultList
 
     @Override
     public int getItemCount() {
-        return 0;
+
+        return mBooksData.size();
     }
 
     public void setBooksData(List<BookInfo> data){
-
+        mBooksData =  data;
     }
 }
