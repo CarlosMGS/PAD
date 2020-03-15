@@ -2,6 +2,7 @@ package com.example.booksfinder;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.loader.app.LoaderManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.net.ConnectivityManager;
@@ -15,7 +16,7 @@ import android.widget.RadioGroup;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity<BookLoaderCallbacks> extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity {
 
     private String editText;
     private String editText2;
@@ -24,6 +25,8 @@ public class MainActivity<BookLoaderCallbacks> extends AppCompatActivity {
     private BookLoaderCallbacks bookLoaderCallbacks = new BookLoaderCallbacks();
     private BooksResultListAdapter booksrla;
     private RecyclerView bookRecyclerView;
+
+
 
 
     @Override
@@ -36,9 +39,15 @@ public class MainActivity<BookLoaderCallbacks> extends AppCompatActivity {
         if (loaderManager.getLoader(BOOK_LOADER_ID) != null){
             loaderManager.initLoader(BOOK_LOADER_ID, null, bookLoaderCallbacks);
         }
-
+        
+        
+        List<BookInfo> lista = new ArrayList<BookInfo>();
         bookRecyclerView = findViewById(R.id.recyclerView);
-        booksrla = new BooksResultListAdapter(this, new ArrayList<BookInfo>());
+        booksrla = new BooksResultListAdapter(this, lista);
+
+        bookRecyclerView.setAdapter(booksrla);
+        // Give the RecyclerView a default layout manager.
+        bookRecyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 
     public void searchBooks(View view){

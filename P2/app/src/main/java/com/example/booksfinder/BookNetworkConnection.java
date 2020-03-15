@@ -1,6 +1,7 @@
 package com.example.booksfinder;
 
 import android.net.Uri;
+import android.util.JsonReader;
 import android.util.Log;
 
 import java.io.BufferedReader;
@@ -31,9 +32,10 @@ public class BookNetworkConnection {
         /* variables */
         List<BookInfo> bookInfo = null;
         HttpURLConnection conn = null;
-        BufferedReader reader;
+        //BufferedReader reader;
         String input = "";
         InputStream inputStream = null;
+        JsonReader reader = null;
 
         try{
             // build the URI request
@@ -55,6 +57,9 @@ public class BookNetworkConnection {
 
             // response treatment
             inputStream = conn.getInputStream();
+            reader = new JsonReader(new InputStreamReader(inputStream));
+
+            /*
             reader = new BufferedReader(new InputStreamReader(inputStream));
             StringBuilder builder = new StringBuilder();
             String line;
@@ -67,7 +72,7 @@ public class BookNetworkConnection {
             }
             input = builder.toString();
 
-            System.out.println(input);
+            System.out.println(input);*/
 
         }
         catch(Exception e){
@@ -79,7 +84,7 @@ public class BookNetworkConnection {
             }
         }
 
-        bookInfo = BookInfo.fromJsonResponse(input);
+        bookInfo = BookInfo.fromJsonResponse(reader);
         Log.d(LOG_TAG, String.valueOf(bookInfo));
 
         return bookInfo;
