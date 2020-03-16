@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         
         
         List<BookInfo> lista = new ArrayList<BookInfo>();
-        bookRecyclerView = findViewById(R.id.recyclerView);
+        bookRecyclerView = findViewById(R.id.bookRecyclerView);
         booksrla = new BooksResultListAdapter(this, lista);
 
         bookRecyclerView.setAdapter(booksrla);
@@ -53,8 +53,8 @@ public class MainActivity extends AppCompatActivity {
     public void searchBooks(View view){
 
         /* variables */
-        editText = ((EditText) findViewById(R.id.editText)).getText().toString();
-        editText2 = ((EditText) findViewById(R.id.editText2)).getText().toString();
+        editText = ((EditText) findViewById(R.id.titleText)).getText().toString();
+        editText2 = ((EditText) findViewById(R.id.authorsText)).getText().toString();
         /* concat authors names and title */
         String queryString = editText + " " + editText2;
 

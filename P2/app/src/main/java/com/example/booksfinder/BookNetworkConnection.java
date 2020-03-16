@@ -26,16 +26,18 @@ public class BookNetworkConnection {
     private static final String MAX_RESULTS = "maxResults";
     // parameter to filter by print type
     private static final String PRINT_TYPE = "printType";
+    private static final int SUCCESS = 200;
 
     public List<BookInfo> getBookInfoJson(String queryString, String printType) throws IOException {
 
         /* variables */
         List<BookInfo> bookInfo = null;
         HttpURLConnection conn = null;
-        //BufferedReader reader;
+        BufferedReader reader;
         String input = "";
         InputStream inputStream = null;
-        JsonReader reader = null;
+        //JsonReader reader = null;
+        int response;
 
         try{
             // build the URI request
@@ -49,30 +51,41 @@ public class BookNetworkConnection {
 
             // open connection
             conn = (HttpURLConnection) requestURL.openConnection();
-            // make a request
-            conn.setReadTimeout(10000 /* milliseconds */);
-            conn.setConnectTimeout(15000 /* milliseconds */);
-            conn.setRequestMethod("GET");
-            conn.setDoInput(true);
+            conn.connect();
 
-            // response treatment
-            inputStream = conn.getInputStream();
-            reader = new JsonReader(new InputStreamReader(inputStream));
+             response = conn.getResponseCode();
 
-            /*
-            reader = new BufferedReader(new InputStreamReader(inputStream));
-            StringBuilder builder = new StringBuilder();
-            String line;
-            while ((line = reader.readLine()) != null){
-                builder.append(line);
-                builder.append("\n");
-            }
-            if (builder.length() == 0) {
-                return null ;
-            }
-            input = builder.toString();
+             if(response == SUCCESS){
 
-            System.out.println(input);*/
+                 // make a request
+                 conn.setReadTimeout(10000 /* milliseconds */);
+                 conn.setConnectTimeout(15000 /* milliseconds */);
+                 conn.setRequestMethod("GET");
+                // conn.setDoInput(true);
+
+                 // response treatment
+                 inputStream = conn.getInputStream();
+                 Log.d(LOG_TAG, String.valueOf(inputStream));
+
+                 reader = new BufferedReader(new InputStreamReader(inputStream));
+                 StringBuilder builder = new StringBuilder();
+                 String line;
+                 while ((line = reader.readLine()) != null){
+                     builder.append(line);
+                     builder.append("\n");
+                 }
+                 if (builder.length() == 0) {
+                     return null ;
+                 }
+                 input = builder.toString();
+             }
+
+
+
+
+
+
+            System.out.println(input);
 
         }
         catch(Exception e){
@@ -84,7 +97,7 @@ public class BookNetworkConnection {
             }
         }
 
-        bookInfo = BookInfo.fromJsonResponse(reader);
+        bookInfo = BookInfo.fromJsonResponse(input);
         Log.d(LOG_TAG, String.valueOf(bookInfo));
 
         return bookInfo;
