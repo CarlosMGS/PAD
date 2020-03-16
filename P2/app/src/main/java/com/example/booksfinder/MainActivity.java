@@ -21,8 +21,8 @@ public class MainActivity extends AppCompatActivity {
     private String editText;
     private String editText2;
     private RadioGroup radioGroup;
-    private static final int BOOK_LOADER_ID = -1;
-    private BookLoaderCallbacks bookLoaderCallbacks = new BookLoaderCallbacks();
+    private static final int BOOK_LOADER_ID = 101;
+    private BookLoaderCallbacks bookLoaderCallbacks = new BookLoaderCallbacks(this);
     private BooksResultListAdapter booksrla;
     private RecyclerView bookRecyclerView;
 

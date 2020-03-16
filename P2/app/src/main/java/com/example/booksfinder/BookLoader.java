@@ -5,6 +5,7 @@ import android.content.Context;
 import androidx.annotation.Nullable;
 import androidx.loader.content.AsyncTaskLoader;
 
+import java.io.IOException;
 import java.util.List;
 
 public class BookLoader extends AsyncTaskLoader<List<BookInfo>> {
@@ -22,7 +23,13 @@ public class BookLoader extends AsyncTaskLoader<List<BookInfo>> {
     @Nullable
     @Override
     public List<BookInfo> loadInBackground() {
-        return null;
+        List<BookInfo> list = null;
+        try {
+            list = this.networkConnection.getBookInfoJson(this.queryString, this.printType);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return list;
     }
 
     @Override

@@ -19,7 +19,7 @@ public class BooksResultListAdapter extends RecyclerView.Adapter<BooksResultList
     List<BookInfo> mBooksData;
     LayoutInflater inflater;
 
-    public <BookLoaderCallbacks> BooksResultListAdapter(Context context, List<BookInfo> bookInfos) {
+    public BooksResultListAdapter(Context context, List<BookInfo> bookInfos) {
         mBooksData = bookInfos;
 
         inflater = LayoutInflater.from(context);
@@ -70,7 +70,6 @@ public class BooksResultListAdapter extends RecyclerView.Adapter<BooksResultList
 
     @Override
     public int getItemCount() {
-
         return mBooksData.size();
     }
 

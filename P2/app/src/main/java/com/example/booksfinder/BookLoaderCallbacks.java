@@ -15,15 +15,17 @@ public class BookLoaderCallbacks implements LoaderManager.LoaderCallbacks<List<B
 
     public static final String EXTRA_QUERY = "queryString";
     public static final String EXTRA_PRINT_TYPE = "printType";
+    private Context context;
 
-    public BookLoaderCallbacks(){
+    public BookLoaderCallbacks(Context context){
         super();
+        this.context = context;
     }
 
     @NonNull
     @Override
     public Loader<List<BookInfo>> onCreateLoader(int id, @Nullable Bundle args) {
-        return new BookLoader((Context)args.get("context"), EXTRA_QUERY, EXTRA_PRINT_TYPE);
+        return new BookLoader(this.context, args.getString(EXTRA_QUERY), args.getString(EXTRA_PRINT_TYPE));
     }
 
     @Override
