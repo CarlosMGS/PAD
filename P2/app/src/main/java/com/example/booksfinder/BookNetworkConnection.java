@@ -89,7 +89,7 @@ public class BookNetworkConnection {
 
         }
         catch(Exception e){
-            System.err.println("Error en la conexión con el API");
+            Log.e(LOG_TAG, "Error en la conexión con el API");
         } finally {
             conn.disconnect();
             if (inputStream != null){

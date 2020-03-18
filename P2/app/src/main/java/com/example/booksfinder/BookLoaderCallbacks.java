@@ -16,10 +16,13 @@ public class BookLoaderCallbacks implements LoaderManager.LoaderCallbacks<List<B
     public static final String EXTRA_QUERY = "queryString";
     public static final String EXTRA_PRINT_TYPE = "printType";
     private Context context;
+    private BooksResultListAdapter booksResultListAdapter;
 
-    public BookLoaderCallbacks(Context context){
+    public BookLoaderCallbacks(Context context, BooksResultListAdapter booksResultListAdapter){
         super();
         this.context = context;
+        this.booksResultListAdapter = booksResultListAdapter;
+
     }
 
     @NonNull
@@ -31,10 +34,15 @@ public class BookLoaderCallbacks implements LoaderManager.LoaderCallbacks<List<B
     @Override
     public void onLoadFinished(@NonNull Loader<List<BookInfo>> loader, List<BookInfo> data) {
 
+
     }
 
     @Override
     public void onLoaderReset(@NonNull Loader<List<BookInfo>> loader) {
 
+        //clean the loader to print other results
+        loader.reset();
+        //notify to adapter to refresh the recyclerview
+        booksResultListAdapter.notifyDataSetChanged();
     }
 }
