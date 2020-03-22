@@ -9,6 +9,8 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:elevation="10dp"
+        android:radius="5dp"
         android:onClick="showWeb">
         <LinearLayout
             android:layout_width="match_parent"
@@ -28,7 +30,8 @@
                 android:id="@+id/Authors"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:text="TextView"
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/url"
