@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Tareas</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <script>
+        // si nuestro navegador ejecuta service workers
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('serviceworker.js').then(reg => {
+                    console.log('Todo bien:', reg)
+                }, function (err) {
+                    console.log('Fallo:', err)
+                })
+            })
+        }
+    </script>
+</head>
+<body>
+<header>
+    <h1 class="center">Tareas</h1>
+</header>
+<main>
+    <div class="container"></div>
+</main>
+<script src="app.js"></script>
+
+</body>
+</html>

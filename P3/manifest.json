@@ -1,0 +1,10 @@
+{
+    "short_name": "Tareas",
+    "name": "Gestor de tareas",
+    "description": "PWA para gestionar tareas",
+    "icons": [ ],
+    "start_url": "/",
+    "background_color": "#26AF31",
+    "display": "standalone",
+    "scope": "/"
+  }
