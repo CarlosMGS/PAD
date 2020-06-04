@@ -4,9 +4,13 @@ class addtarea extends Component{
 
     constructor(props){
         super(props)
+
+       
         this.state = {
             estado : false,
-            texto : ""
+            texto : "",
+            updateGUI : props.updateGUI
+            
         }
     }
 
@@ -15,7 +19,7 @@ class addtarea extends Component{
             return html `
                         <button onclick=${ this.addOnClick.bind(this)} > Añadir tarea </button>
                         <div class="nuevatarea">
-                        <input type="text" value=${this.state.texto} />
+                        <input type="text" id="tarea" />
                         <div class="add">
                         <button onclick=${ this.cancelarClick.bind(this)} > Cancelar </button> 
                         <button onclick=${ this.guardarClick.bind(this)} > Guardar </button> 
@@ -33,17 +37,24 @@ class addtarea extends Component{
         if(this.state.estado){
             this.setState({estado:false})
         }else{
-            console.log("Ha llegado con estado "+ this.state.estado)
+            
             this.setState({estado:true})
-            console.log("Ha llegado con estado "+ this.state.estado)
+            
         }
     }
 
     guardarClick(e){
-
+        e.preventDefault()
+        this.setState({texto : document.getElementById("tarea").value})
+       
+        if(this.state.texto !== ""){
+            this.state.updateGUI("add", this.state.texto)
+            this.setState({estado:false})
+        }
     }
 
     cancelarClick(e){
+        e.preventDefault()
         this.setState({estado:false})
     }
 }

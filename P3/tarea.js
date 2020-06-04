@@ -4,16 +4,16 @@ class tarea extends Component{
 
     constructor(props) {
         super(props)
-        this.valor = {
-            texto: "default",
+        this.state = {
+            texto: props.texto,
             estado: false
         }
     }
 
     render(){
-        if(this.valor.estado){
+        if(this.state.estado){
             return html `
-                        <input type="text" value=${this.valor.texto} />
+                        <input type="text" value=${this.state.texto} />
                         <div class="tarea">
                         <button onclick=${ this.cancelarClick.bind(this)} > Cancelar </button> 
                         <button onclick=${ this.guardarClick.bind(this)} > Guardar </button> 
@@ -21,21 +21,24 @@ class tarea extends Component{
                         </div>
                         `
         }else{
-            return html `<button onclick=${ this.tareaOnClick.bind(this)} > ${this.valor.texto} </button> `
+            return html `<button onclick=${ this.tareaOnClick.bind(this)} > ${this.state.texto} </button> `
         }
     }
 
     tareaOnClick(e){
         e.preventDefault()
-        if(this.valor.estado){
-            this.valor.estado = false
+        if(this.state.estado){
+            this.setState({estado:false})
         }else{
-            this.valor.estado = true
+            
+            this.setState({estado:true})
+            
         }
     }
 
     cancelarClick(e){
-
+        e.preventDefault()
+        this.setState({estado:false})
     }
 
     guardarClick(e){
