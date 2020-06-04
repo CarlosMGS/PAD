@@ -6,14 +6,16 @@ class tarea extends Component{
         super(props)
         this.state = {
             texto: props.texto,
-            estado: false
+            estado: false,
+            update : props.updateGUI,
+            texto_viejo: props.texto
         }
     }
 
     render(){
         if(this.state.estado){
             return html `
-                        <input type="text" value=${this.state.texto} />
+                        <input type="text" value=${this.state.texto} id="tarea_in"/>
                         <div class="tarea">
                         <button onclick=${ this.cancelarClick.bind(this)} > Cancelar </button> 
                         <button onclick=${ this.guardarClick.bind(this)} > Guardar </button> 
@@ -42,10 +44,20 @@ class tarea extends Component{
     }
 
     guardarClick(e){
-
+        e.preventDefault()
+        this.setState({texto: document.getElementById("tarea_in").value})
+        if(this.state.texto !== ""){
+            this.state.update("guardar", this.state.texto, this.state.texto_viejo)
+            this.setState({estado:false})
+        }
     }
 
     eliminarClick(e){
+        e.preventDefault()
+        
+        this.state.update("borrar", this.state.texto, this.state.texto_viejo)
+        this.setState({estado:false})
+        
 
     }
 

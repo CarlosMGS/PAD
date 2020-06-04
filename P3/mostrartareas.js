@@ -5,7 +5,9 @@ class mostrartareas extends Component{
     render(){
         return this.props.tareas.map( (nombre)=> (
             html `
-                <${tarea} texto=${nombre}/>
+                <${tarea} 
+                    texto=${nombre}
+                    updateGUI=${this.props.updateGUI.bind(this)}/>
             `
         ))
     }

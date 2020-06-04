@@ -48,7 +48,7 @@ class addtarea extends Component{
         this.setState({texto : document.getElementById("tarea").value})
        
         if(this.state.texto !== ""){
-            this.state.updateGUI("add", this.state.texto)
+            this.state.updateGUI("add", this.state.texto, "")
             this.setState({estado:false})
         }
     }
