@@ -15,11 +15,13 @@ class tarea extends Component{
     render(){
         if(this.state.estado){
             return html `
+                        <div class="tareaOpt">
                         <input type="text" value=${this.state.texto} id="tarea_in"/>
                         <div class="tarea">
                         <button onclick=${ this.cancelarClick.bind(this)} > Cancelar </button> 
                         <button onclick=${ this.guardarClick.bind(this)} > Guardar </button> 
                         <button onclick=${ this.eliminarClick.bind(this)} > Eliminar </button> 
+                        </div>
                         </div>
                         `
         }else{

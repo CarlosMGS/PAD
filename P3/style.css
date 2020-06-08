@@ -1,0 +1,105 @@
+*{
+	text-align: center;
+	font-family: Verdana;
+	margin: 0;
+	padding: 0;
+}
+
+header{
+	height: 6em;
+	line-height: 6em;
+}
+
+/********************************/
+/*			 Buttons			*/
+/********************************/
+
+button{
+	margin: 6px 6px;
+	padding: 5px 12px;
+
+	background-color: white;
+	border-style: solid;
+	border-width: 1px;
+	border-radius: 6px;
+
+	box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2), 0 3px 10px 0 rgba(0,0,0,0.19);
+}
+
+button:focus{
+	border-color: orange;
+	box-shadow: 0 0 3px 5px orange;
+	outline: 1px solid transparent;
+}
+
+/********************************/
+/*			 Inputs 			*/
+/********************************/
+
+input{
+	padding: 3px 4px;
+	border-style: solid;
+	border-width: 1px;
+	border-radius: 6px;
+}
+
+input:focus{
+	border-color: orange;
+	box-shadow: 0 0 3px 5px orange;
+	outline: 1px solid transparent;
+}
+
+/********************************/
+/*		   Div Superior			*/
+/********************************/
+.superior{
+	width: inherit;
+	padding-top: 20px;
+	padding-bottom: 6px;
+	min-height: 9em;
+
+	border-radius: 6px;
+	margin-right: 40px;
+	margin-left: 40px;
+	background-color: lightgrey;
+}
+
+.addButton{
+	font-size: 1em;
+	padding-left: 18px;
+	padding-right: 18px;
+}
+
+.nuevatarea{
+	margin-top: 6px;
+	padding-top: 6px; 
+}
+
+.add{
+	margin-top: 6px;
+	padding-top: 6px; 
+}
+
+/********************************/
+/*		   Div Inferior			*/
+/********************************/
+
+.inferior{
+	width: inherit;
+	margin-top: 10px;
+	padding: 10px 0;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	border-radius: 6px;
+	margin-right: 40px;
+	margin-left: 40px;
+	background-color: lightblue;
+}
+
+.tareaOpt{
+	margin: 12px 0;
+	padding-top: 6px; 
+}

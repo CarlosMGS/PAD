@@ -17,7 +17,7 @@ class addtarea extends Component{
     render(){
         if(this.state.estado){
             return html `
-                        <button onclick=${ this.addOnClick.bind(this)} > Añadir tarea </button>
+                        <button class="addButton" onclick=${ this.addOnClick.bind(this)} > Añadir tarea </button>
                         <div class="nuevatarea">
                         <input type="text" id="tarea" />
                         <div class="add">
@@ -27,7 +27,7 @@ class addtarea extends Component{
                         </div>
                         `
         }else{
-            return html `<button onclick=${ this.addOnClick.bind(this)} > Añadir tarea </button> `
+            return html `<button class="addButton" onclick=${ this.addOnClick.bind(this)} > Añadir tarea </button> `
         }
     }
 
