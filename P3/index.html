@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tareas</title>
     <link rel="stylesheet" href="style.css">
     <link rel="manifest" href="package.json">
@@ -9,7 +10,7 @@
         // si nuestro navegador ejecuta service workers
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register('serviceworker.js').then(reg => {
+                navigator.serviceWorker.register('sw.js').then(reg => {
                     console.log('Todo bien:', reg)
                 }, function (err) {
                     console.log('Fallo:', err)
