@@ -57,12 +57,13 @@ class Principal extends Component {
             
             var i = tareas.indexOf( nombre_ant );
  
-            if ( i !== -1 ) {
+            if ( i !== -2 ) {
                 tareas.splice( i, 1 );
             }
 
             localStorage.setItem("tareas",JSON.stringify(tareas))
             this.setState({tareas: tareas})
+            
 
         }else{
             console.log("Error")

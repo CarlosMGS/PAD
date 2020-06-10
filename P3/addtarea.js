@@ -45,10 +45,11 @@ class addtarea extends Component{
 
     guardarClick(e){
         e.preventDefault()
+        let nombre = document.getElementById("tarea").value
         this.setState({texto : document.getElementById("tarea").value})
        
-        if(this.state.texto !== ""){
-            this.state.updateGUI("add", this.state.texto, "")
+        if(nombre !== ""){
+            this.state.updateGUI("add", nombre, "")
             this.setState({estado:false})
         }
     }

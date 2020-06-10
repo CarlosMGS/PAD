@@ -16,7 +16,7 @@ class tarea extends Component{
         if(this.state.estado){
             return html `
                         <div class="tareaOpt">
-                        <input type="text" value=${this.state.texto} id="tarea_in"/>
+                        <input type="text" value=${this.props.texto} id="tarea_in"/>
                         <div class="tarea">
                         <button onclick=${ this.cancelarClick.bind(this)} > Cancelar </button> 
                         <button onclick=${ this.guardarClick.bind(this)} > Guardar </button> 
@@ -25,7 +25,7 @@ class tarea extends Component{
                         </div>
                         `
         }else{
-            return html `<button onclick=${ this.tareaOnClick.bind(this)} > ${this.state.texto} </button> `
+            return html `<button onclick=${ this.tareaOnClick.bind(this)} > ${this.props.texto} </button> `
         }
     }
 
@@ -48,9 +48,11 @@ class tarea extends Component{
     guardarClick(e){
         e.preventDefault()
         this.setState({texto: document.getElementById("tarea_in").value})
-        if(this.state.texto !== ""){
-            this.state.update("guardar", this.state.texto, this.state.texto_viejo)
+        let nombre = document.getElementById("tarea_in").value
+        if(nombre !== ""){
+            this.state.update("guardar", nombre, this.state.texto_viejo)
             this.setState({estado:false})
+            this.setState({texto_viejo:nombre})
         }
     }
 
@@ -60,7 +62,6 @@ class tarea extends Component{
         this.state.update("borrar", this.state.texto, this.state.texto_viejo)
         this.setState({estado:false})
         
-
     }
 
 }
